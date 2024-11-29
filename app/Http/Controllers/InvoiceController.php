@@ -27,4 +27,12 @@ class InvoiceController extends Controller
         // return view('invoices-create',['data'=>'Cleared table']);
         
     }
+
+    public function getData($id) {
+
+        $record = transaction::find($id);
+
+        return response()->json($record);
+        
+    }
 }

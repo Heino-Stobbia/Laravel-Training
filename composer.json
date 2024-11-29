@@ -7,7 +7,9 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/sanctum": "^4.0",
+        "laravel/tinker": "^2.9",
+        "resend/resend-laravel": "^0.15.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -46,6 +48,11 @@
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
+        ],
+        "dbSetup": [
+            "php artisan migrate:rollback",
+            "php artisan migrate",
+            "php artisan db:seed"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
